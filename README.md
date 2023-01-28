@@ -1,9 +1,11 @@
 # Simulating-Ultrasound-images-from-CT-Scans
+
 This work got accepted at the Bioimaging Conference 2023
 Currently the Arxiv version of this paper is available at:
 https://www.medrxiv.org/content/10.1101/2023.01.16.23284615v1
 
 # How to run the code:
+
 1. Install Stride: follow the guidelines in https://github.com/trustimaging/stride
 2. Create a folder which contains your CT images. You can download CT images from the following link: 
 https://www.cancerimagingarchive.net/
