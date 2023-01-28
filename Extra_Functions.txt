@@ -1,0 +1,73 @@
+#Add the following functions to geometries.py
+
+def linear(num,radius, centre):
+    geometry = np.zeros((num, 2))
+    i = 0.0
+    for index in zip(range(num)):
+        i = i+1
+        geometry[index, 0] = radius[0]*i + centre[0]
+        geometry[index, 1] = centre[1]
+    return geometry
+
+def linear2(num,radius, centre):
+    geometry = np.zeros((num, 2))
+    i = 0.0
+    j = 0.0
+    for index in zip(range(num)):
+        i = i+1
+        #geometry[index, 0] = radius[0]*i + centre[0]
+        if i<=num//2:
+            geometry[index, 0] = radius[0]*i + centre[0]
+            geometry[index, 1] = centre[1]
+        else:
+            j = j+1
+            geometry[index, 0] = radius[0]*j + centre[0]
+            geometry[index, 1] = 0.1800
+            
+    return geometry
+    
+def curvilinear(num,start,chord,pixel_size):
+    geometry = np.zeros((num,2))
+    
+    #k = 1.0
+    #j = 1.0
+    #for index in zip(range(num)):
+        #geometry[index,1] = start[1] + (j*0.0003)#*(pixel_size)
+        #geometry[index,0] = start[0] + k*(chord/num)
+        #k = k+1
+        #if k<33:
+        #    j = j+1
+        #else:
+        #    j = j-1
+    Range = np.arange(55,125,1.09375)#(50,130,1.25)
+    index = 0
+    for a in Range:
+        geometry[index,1]=0.040925*np.sin((a*math.pi)/180)-0.033#-0.042#0.0496*np.sin((a*math.pi)/180)-0.05#0.038
+        geometry[index,0]=0.040925*np.cos((a*math.pi)/180)+0.06#0.0496*np.cos((a*math.pi)/180)+0.06
+        index = index+1
+    
+        
+    return geometry 
+
+# Add the following lines to geometry.py
+
+elif geometry_type == 'linear':
+    n = args[0]
+    default_radius = ((self.space.limit[0])/(2*n),0)
+    default_centre = (0.05,0.01)
+    kwargs['radius'] = kwargs.get('radius', default_radius)
+    kwargs['centre'] = kwargs.get('centre', default_centre)
+            
+elif geometry_type == 'linear2':
+    n = args[0]
+    default_radius = ((self.space.limit[0])/(2*n),0)
+    default_centre = (0.05,0.01)
+    kwargs['radius'] = kwargs.get('radius', default_radius)
+    kwargs['centre'] = kwargs.get('centre', default_centre)
+            
+elif geometry_type == 'curvilinear':
+    kwargs['num'] = kwargs.get('num', 64)
+    kwargs['start'] = kwargs.get('start', (0,0))
+    kwargs['chord'] = kwargs.get('chord', 0.06)
+    kwargs['pixel_size'] = kwargs.get('pixel_size', 0.000498)
+
