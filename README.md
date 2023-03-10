@@ -14,9 +14,11 @@ https://www.cancerimagingarchive.net/
 5. Run the script "GPU_02_jupyter_inverse-att.ipynb"
 And we are done :)
 
-Note:
+Note1:
 As we designed our transducer you should add the functions mentioned in "Extra_Functions.txt" to the corresponding scripts in Stride. Or dirctly use the modified scripts "geometries.py", and "geometry.py"
- 
+
+Note2:
+To modify the .h5 file, use H5.ipynb
 
 
 
